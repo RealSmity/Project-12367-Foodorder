@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>รายการคำสั่งซื้อทั้งหมด</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>ผู้สั่งซื้อ</th>
+                <th>วันที่สั่งซื้อ</th>
+                <th>ยอดรวม</th>
+                <th>สถานะ</th>
+                <th>รายละเอียด</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.order_id }}</td>
+                    <td>{{ order.user.username }}</td>
+                    <td>{{ order.order_date|date:"d M Y H:i" }}</td>
+                    <td>฿{{ order.total_amount }}</td>
+                    <td>{{ order.get_status_display }}</td>
+                    <td><a href="{% url 'order_detail' order.order_id %}" class="btn btn-sm btn-info">ดูรายละเอียด</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>รายละเอียดคำสั่งซื้อ #{{ order.order_id }}</h1>
+
+    <p><strong>วันที่สั่งซื้อ:</strong> {{ order.order_date|date:"d M Y H:i" }} น.</p>
+    <p><strong>สถานะ:</strong> {{ order.get_status_display }}</p>
+    <p><strong>ยอดรวมทั้งหมด:</strong> ฿{{ order.total_amount }}</p>
+
+    <h2>รายการสินค้า</h2>
+    {% if order_items %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ชื่อสินค้า</th>
+                    <th>จำนวน</th>
+                    <th>ราคาต่อหน่วย</th>
+                    <th>ราคารวม</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order_items %}
+                    <tr>
+                        <td>{{ item.food.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>฿{{ item.price }}</td>
+                        <td>฿{{ item.get_total_price }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>ไม่มีรายการสินค้าในคำสั่งซื้อนี้.</p>
+    {% endif %}
+
+    <a href="{% url 'user_orders' %}" class="btn btn-secondary">กลับไปรายการสั่งซื้อ</a>
+
+    {% if order.status != 'delivered' and order.status != 'cancelled' %}
+        <form method="post" action="{% url 'cancel_order' order.order_id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">ยกเลิกคำสั่งซื้อ</button>
+        </form>
+    {% endif %}
+{% endblock %}

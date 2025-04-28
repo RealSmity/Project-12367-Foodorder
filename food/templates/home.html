@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Oishii & Chill</h1>
+
+<p><a href="{% url 'user_orders' %}">ดูรายการสั่งซื้อทั้งหมดของคุณ</a></p>
+
+<div class="row">
+    {% for food in food %}
+        <div class="col-md-4 mb-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ food.image }}" alt="{{ food.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ food.name }}</h5>
+                    <p class="card-text">฿{{ food.price }}</p>
+                    <form action="{% url 'create_order' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="food_id" value="{{ food.id }}">
+                        <div class="form-group">
+                            <label for="quantity_{{ food.id }}">จำนวน:</label>
+                            <input type="number" class="form-control form-control-sm" id="quantity_{{ food.id }}" name="quantity" value="1" min="1">
+                        </div>
+                        <button type="submit" class="btn btn-primary">สั่งซื้อ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
