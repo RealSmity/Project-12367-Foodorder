@@ -14,13 +14,13 @@
 เมนูอาหารสามารถเพิ่มจำนวนและกดสั่งซื้อได้
 ปุ่มดูรายการคำสั่งซื้อทั้งหมด
 ปุ่มค้นหารายการคำสั่งซื้อ
-!Image
+![Image](https://github.com/user-attachments/assets/8be5a777-2841-43b4-b6b4-fb5a2b4fad24)
 หน้าดูรายการคำสั่งซื้อทั้งหมด
 ส่วนนี้จะแสดงรายการคำสั่งซื้อทั้งหมดโดยที่แสดง Order ID , วันที่สั่งซื้อ , ยอดรวม , สถานะ , รายละเอียด
-!Image
+![Image](https://github.com/user-attachments/assets/05c0ef27-9ef1-435e-9610-0f96ec4cace6)
 รายละเอียดของคำสั่งซื้อ
 ในส่วนนี้สามารถตรวจสอบได้ว่า Order ID นี้มีรายละเอียดเกี่ยวกับเมนู จำนวน และราคารวมทั้งหมด
-!Image
+![Image](https://github.com/user-attachments/assets/d33b0ac3-22b2-405d-9bee-77189ac44cf5)
 หน้าค้นหาคำสั่งซื้อ
 ส่วนนี้สามารถนำ Order ID มาใช้ในการค้นหาคำสั่งซื้อ ในกรณีที่ต้องการจะหาเฉพาะ Order ID นั้นๆ
-!Image
+![Image](https://github.com/user-attachments/assets/e561cce9-1b2d-4af7-b79a-11c20ec0884f)
